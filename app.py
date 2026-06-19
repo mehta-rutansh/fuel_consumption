@@ -249,19 +249,7 @@ def load_model():
 # ─── LOAD DATA (CSV, with zip fallback for large files too) ───
 @st.cache_data
 def load_data():
-    csv_path = "fuel_engineered.csv"
-    zip_path = "fuel_engineered.zip"
-
-    if not os.path.exists(csv_path) and os.path.exists(zip_path):
-        with zipfile.ZipFile(zip_path, "r") as zf:
-            zf.extractall(".")
-
-    if not os.path.exists(csv_path):
-        st.error("⚠️ Data file `fuel_engineered.csv` not found. Make sure it is in the "
-                  "same folder as app.py and committed to your repo.")
-        st.stop()
-
-    return pd.read_csv(csv_path)
+    return pd.read_csv("fuel_engineered.xls")
 
 model = load_model()
 df    = load_data()
