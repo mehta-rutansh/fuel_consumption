@@ -4,12 +4,9 @@ import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
+import zipfile
+import os
 
-st.set_page_config(
-    page_title="Fuel Consumption Analyzer",
-    page_icon="⛽",
-    layout="wide"
-)
 
 # ─── CUSTOM CSS ────────────────────────────────────────────────
 st.markdown("""
@@ -229,10 +226,19 @@ hr { border-color: rgba(255,255,255,0.1) !important; }
 """, unsafe_allow_html=True)
 
 # ─── LOAD MODEL & DATA ─────────────────────────────────────────
+
 @st.cache_resource
 def load_model():
+    # Unzip the model if the .pkl doesn't exist yet but the .zip does
+    if not os.path.exists("fuel_model.pkl") and os.path.exists("fuel_model.zip"):
+        with zipfile.ZipFile("fuel_model.zip", "r") as zip_ref:
+            zip_ref.extractall(".")
     return pickle.load(open("fuel_model.pkl", "rb"))
-
+st.set_page_config(
+    page_title="Fuel Consumption Analyzer",
+    page_icon="⛽",
+    layout="wide"
+)
 @st.cache_data
 def load_data():
     return pd.read_csv("fuel_engineered.xls")
