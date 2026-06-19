@@ -362,7 +362,7 @@ elif page == "📊  EDA Charts":
             fig, ax = plt.subplots(figsize=(6, 3.8))
             n, bins, patches = ax.hist(df['EMISSIONS'], bins=45, edgecolor='none')
             # Color gradient
-            cm = plt.cm.get_cmap('cool')
+            cm = plt.colormaps('cool')
             col_scale = (n - n.min()) / (n.max() - n.min())
             for c_val, patch in zip(col_scale, patches):
                 patch.set_facecolor(cm(c_val))
@@ -382,7 +382,7 @@ elif page == "📊  EDA Charts":
             st.markdown("<div class='chart-card'>", unsafe_allow_html=True)
             fig, ax = plt.subplots(figsize=(6, 3.8))
             n, bins, patches = ax.hist(df['COMB (L/100 km)'], bins=45, edgecolor='none')
-            cm2 = plt.cm.get_cmap('plasma')
+            cm2 = plt.colormaps('plasma')
             col_scale2 = (n - n.min()) / (n.max() - n.min())
             for c_val, patch in zip(col_scale2, patches):
                 patch.set_facecolor(cm2(c_val))
@@ -403,7 +403,7 @@ elif page == "📊  EDA Charts":
             st.markdown("<div class='chart-card'>", unsafe_allow_html=True)
             fig, ax = plt.subplots(figsize=(6, 3.8))
             n, bins, patches = ax.hist(df['ENGINE SIZE'], bins=40, edgecolor='none')
-            cm3 = plt.cm.get_cmap('viridis')
+            cm3 = plt.colormaps('viridis')
             col_scale3 = (n - n.min()) / (n.max() - n.min())
             for c_val, patch in zip(col_scale3, patches):
                 patch.set_facecolor(cm3(c_val))
