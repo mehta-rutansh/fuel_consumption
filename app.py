@@ -103,13 +103,13 @@ hr { border-color: rgba(255,255,255,0.1) !important; }
 # ─── LOAD MODEL & DATA (with zip auto-extract) ────────────────
 @st.cache_resource
 def load_model():
-    if not os.path.exists("fuel_model.pkl") and os.path.exists("fuel_model.zip"):
-        with zipfile.ZipFile("fuel_model.zip", "r") as zf:
+    if not os.path.exists("fuel_consumption_model.pkl") and os.path.exists("fuel_consumption_model.zip"):
+        with zipfile.ZipFile("fuel_consumption_model.zip", "r") as zf:
             zf.extractall(".")
-    if not os.path.exists("fuel_model.pkl"):
-        st.error("⚠️ Model file not found. Add fuel_model.pkl or fuel_model.zip to the repo.")
+    if not os.path.exists("fuel_consumption_model.pkl"):
+        st.error("⚠️ Model file not found. Add fuel_consumption_model.pkl or fuel_consumption_model.zip to the repo.")
         st.stop()
-    return pickle.load(open("fuel_model.pkl", "rb"))
+    return pickle.load(open("fuel_consumption_model.pkl", "rb"))
 
 @st.cache_data
 def load_data():
