@@ -104,7 +104,7 @@ def load_model():
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("new_fuel_engineered.xls")
+    return pd.read_csv("new_fuel_engineered.csv")
 
 model = load_model()
 df    = load_data()
