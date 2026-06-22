@@ -97,7 +97,7 @@ def load_model():
     if not os.path.exists("new_fuel_model.pkl") and os.path.exists("new_fuel_model.zip"):
         with zipfile.ZipFile("new_fuel_model.zip", "r") as zf:
             zf.extractall(".")
-    if not os.path.exists("fuel_model.pkl"):
+    if not os.path.exists("new_fuel_model.pkl"):
         st.error("⚠️ new_fuel_model.pkl or new_fuel_model.zip not found in the repo.")
         st.stop()
     return pickle.load(open("new_fuel_model.pkl", "rb"))
